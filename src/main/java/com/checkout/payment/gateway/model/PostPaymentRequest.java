@@ -2,7 +2,6 @@ package com.checkout.payment.gateway.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -79,12 +78,6 @@ public class PostPaymentRequest implements Serializable {
 
   public void setCvv(String cvv) {
     this.cvv = cvv;
-  }
-
-  @JsonProperty("expiry_date")
-  @Schema(hidden = true)
-  public String getExpiryDate() {
-    return String.format("%d/%d", expiryMonth, expiryYear);
   }
 
   @JsonIgnore
