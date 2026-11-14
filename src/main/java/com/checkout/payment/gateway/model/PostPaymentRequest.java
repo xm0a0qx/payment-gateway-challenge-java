@@ -18,9 +18,6 @@ public class PostPaymentRequest implements Serializable {
   @NotNull(message = "card_number is required")
   @Pattern(regexp = "\\d{14,19}", message = "card_number must be 14-19 digits")
   private String cardNumber;
-  @JsonProperty("card_number_last_four")
-  @Schema(hidden = true)
-  private int cardNumberLastFour;
   @JsonProperty("expiry_month")
   @Min(value = 1, message = "expiry_month must be between 1 and 12")
   @Max(value = 12, message = "expiry_month must be between 1 and 12")
@@ -42,14 +39,6 @@ public class PostPaymentRequest implements Serializable {
 
   public void setCardNumber(String cardNumber) {
     this.cardNumber = cardNumber;
-  }
-
-  public int getCardNumberLastFour() {
-    return cardNumberLastFour;
-  }
-
-  public void setCardNumberLastFour(int cardNumberLastFour) {
-    this.cardNumberLastFour = cardNumberLastFour;
   }
 
   public int getExpiryMonth() {
@@ -110,8 +99,7 @@ public class PostPaymentRequest implements Serializable {
   @Override
   public String toString() {
     return "PostPaymentRequest{" +
-        "cardNumberLastFour=" + cardNumberLastFour +
-        ", expiryMonth=" + expiryMonth +
+        "expiryMonth=" + expiryMonth +
         ", expiryYear=" + expiryYear +
         ", currency='" + currency + '\'' +
         ", amount=" + amount +
